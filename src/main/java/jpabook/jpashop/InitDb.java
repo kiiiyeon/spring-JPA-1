@@ -16,11 +16,13 @@ public class InitDb {
 
     private final InitService initService;
 
+    /*
     @PostConstruct
     public void init() {
         initService.dbInit1();
         initService.dbInit2();
     }
+     */
 
     @Component
     @Transactional

@@ -29,4 +29,16 @@ public class OrderRepository {
                 .setMaxResults(1000) //최대 1000건
                 .getResultList();
     }
+
+
+    //패치 조인 최적화 (패치 -> Lazy가 걸려있어도 무시, 프록시 객체 사용X)
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class
+        ).getResultList();
+    }
+
+
 }
